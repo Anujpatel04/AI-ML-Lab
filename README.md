@@ -16,7 +16,7 @@
 
 ### A comprehensive collection of AI agents, RAG applications, and machine learning algorithms built from the ground up
 
-[Quick Start](#quick-start) • [Documentation](#project-categories) • [Contributing](#contributing) • [Star Us](#)
+[Quick Start](#quick-start) • [Project Index](#project-categories) • [Setup](docs/SETUP.md) • [Contributing](#contributing) • [Star Us](#)
 
 </div>
 
@@ -30,6 +30,7 @@
 - [Quick Start](#quick-start)
 - [LLM Projects (Submodules)](#llm-projects-submodules)
 - [Contributing](#contributing)
+- [Code of Conduct](#code-of-conduct)
 - [License](#license)
 
 ---
@@ -99,80 +100,124 @@ Welcome to **Anuj AI/ML Lab** - a comprehensive learning resource and developmen
 <details open>
 <summary><b>AI Agents</b> - Click to expand</summary>
 
-| Agent Type | Description | Tech Stack |
-|------------|-------------|------------|
-| Content Generation | Automated content creation systems | LangChain, OpenAI |
-| Web Scraping | Intelligent data extraction agents | Playwright, BeautifulSoup |
-| Meeting Transcription | Audio-to-text conversion with AI summaries | Whisper, GPT-4 |
-| Business Intelligence | Data analysis and reporting agents | Pandas, Plotly |
-| LLM Applications | Chat with Gmail, YouTube, PDFs, and more | RAG, Vector DBs |
+| Project | Description |
+|---------|-------------|
+| [OpenAI Video Agent](AI_AGENTS/OpenAI_VideoAgent) | Sora short video generation (15–30s), Streamlit + CLI |
+| [Meeting Summarize](AI_AGENTS/Meeting_Summarize) | Meeting transcripts to actionable notes and follow-up emails |
+| [Meeting Agent](AI_AGENTS/Meeting_Agent) | Meeting transcription and AI summaries |
+| [Personal Context Memory](AI_AGENTS/PersonalContextMemory_agent) | Context-aware agent with persistent memory |
+| [Domain-Specific Q&A Chatbot](AI_AGENTS/DomainSpecific_Q&A_Chatbot) | Domain-focused question answering |
+| [OpenAI Content Rewriter](AI_AGENTS/OpenAI_ContentRewritter_Agent) | Automated content rewriting with OpenAI |
+| [Prompt Optimizer](AI_AGENTS/Prompt_optimizer) | Optimize and refine LLM prompts |
+| [Multi-Agent Researcher](AI_AGENTS/multi_agent_researcher) | Multi-agent research on HackerNews and web |
+| [Resume & Job Suggestions](AI_AGENTS/ResumeJOB_Suggestions) | Resume analysis and job recommendations |
+| [Chat with SQL](AI_AGENTS/ChatWith_SQL_Locally) | Natural language to SQL, local execution |
+| [Music Generator](AI_AGENTS/MusicGenrator_Agent) | AI-powered music generation |
+| [Chat with Gmail](AI_AGENTS/chat_with_gmail) | LLM-powered Gmail integration and chat |
+| [AI Meme Generator](AI_AGENTS/AI_Meme_Generator) | Generate memes with AI |
+| [Health & Fitness Agent](AI_AGENTS/Health_Fitness_Agent) | Health and fitness guidance agent |
+| [Simple Scraping Agent](AI_AGENTS/Simple_ScrapingAgent) | Intelligent web scraping |
+| [Journalist Agent](AI_AGENTS/Journalist_Agent) | Automated journalism and article drafting |
+| [Chat with Tarots](AI_AGENTS/chat-with-tarots) | Tarot reading and chat |
+| [Home Renovation Agent](AI_AGENTS/Home_Renovation_agent) | Home renovation planning with AI |
+| [Startup Insight Agent](AI_AGENTS/Startup_Insight_Agent) | Startup and business insights |
+| [Movie Production Agent](AI_AGENTS/movie_production_agent) | Movie and video production assistance |
+| [Chat YouTube](AI_AGENTS/chat_youtube) | Chat over YouTube content |
+| [Local Llama Agent](AI_AGENTS/LocalLama_Agent) | Local LLM agent with Llama |
+| [LinkedIn Roster](AI_AGENTS/LINKEDIN_ROSTER) | LinkedIn-related agent |
 
 </details>
 
 <details open>
 <summary><b>RAG Applications</b> - Click to expand</summary>
 
-Advanced retrieval-augmented generation implementations for:
-- Document processing and indexing
-- Semantic search and retrieval
-- Context-aware question answering
-- Knowledge base management
-- Multi-source data integration
+| Project | Description |
+|---------|-------------|
+| [Page-Indexed RAG](RAGs/PageIndexed_RAG) | PDF RAG with page-level retrieval and source attribution |
+| [PDF RAG](RAGs/PDF_RAG) | Chat and query over PDF documents |
+| [GraphRAG Papers](RAGs/GraphRAG_Papers) | Graph-based RAG over academic papers (Neo4j + Next.js) |
+
+Advanced retrieval-augmented generation: document indexing, semantic search, context-aware QA, multi-source integration.
 
 </details>
 
 <details open>
 <summary><b>Machine Learning Algorithms</b> - Click to expand</summary>
 
-From-scratch implementations for educational purposes:
-- **Supervised Learning**: Linear/Logistic Regression, Decision Trees, SVM, Neural Networks
-- **Unsupervised Learning**: K-Means, PCA, Hierarchical Clustering
-- **Deep Learning**: CNNs, RNNs, Transformers (basic implementations)
-- **Optimization**: Gradient Descent, Adam, RMSprop
+| Project | Description |
+|---------|-------------|
+| [Supervised Learning](ALL_MachineLearning_Algos/Supervised_Learning) | Regression, classification, XGBoost, AdaBoost, Gradient Boosting |
+| [Unsupervised Learning](ALL_MachineLearning_Algos/Unsupervised_Learning) | PCA, clustering, dimensionality reduction |
+
+From-scratch implementations: Linear/Logistic Regression, Decision Trees, SVM, K-Means, PCA, optimization (Gradient Descent, Adam, RMSprop).
 
 </details>
 
 <details>
 <summary><b>Fine-Tuning Projects</b> - Click to expand</summary>
 
-LLM fine-tuning implementations:
-- LoRA (Low-Rank Adaptation)
-- Domain-specific adaptations
-- Parameter-efficient fine-tuning
-- Training pipelines and evaluation
+| Project | Description |
+|---------|-------------|
+| [Local Trained Code Model](FineTunning_Projects/LocalTrained_CodeModel) | LoRA fine-tuning for code generation |
+| [Legal Docs Summarization](FineTunning_Projects/LegalDocs_Summarization) | Domain fine-tuning for legal document summarization |
+
+LoRA, parameter-efficient fine-tuning, training pipelines and evaluation.
 
 </details>
 
 <details>
 <summary><b>Voice Agents</b> - Click to expand</summary>
 
-Voice-powered AI systems:
-- Customer support automation
-- Web interaction via voice
-- Real-time speech processing
-- Text-to-speech integration
+| Project | Description |
+|---------|-------------|
+| [Voice Tutor Agent](VOICE_AGENTS/VoiceTutor_Agent) | Voice-powered tutoring |
+| [Voice ML Interview Coach](VOICE_AGENTS/VoiceMLInterview_Coach) | Interview practice with voice AI |
+| [Role-Based Voice Agent](VOICE_AGENTS/RoleBased_VoiceAgent) | Role-based voice assistants |
+| [VOICE RAG](VOICE_AGENTS/VOICE_RAG) | Voice interface to RAG systems |
+| [Tour Agent](VOICE_AGENTS/Tour_Agent) | Voice-guided tour agent |
+| [Websupport Voice Agent](VOICE_AGENTS/Websupport_voiceAgent) | Customer support voice agent |
 
 </details>
 
 <details>
 <summary><b>MCP Agents</b> - Click to expand</summary>
 
-Model Context Protocol implementations:
-- External tool integration
-- API connectivity
-- Multi-agent collaboration
-- Real-time data streaming
+| Project | Description |
+|---------|-------------|
+| [GitHub MCP Agent](MCP_AGENTS/github_mcp_agent) | GitHub integration via MCP |
+| [Browser MCP Agent](MCP_AGENTS/Browser_mcp_agent) | Browser automation via MCP |
+| [Git Q&A MCP Agent](MCP_AGENTS/Git_Q&A_MCPagent) | Git repository Q&A with MCP |
 
 </details>
 
 <details>
 <summary><b>N8N Automation</b> - Click to expand</summary>
 
-Workflow automation configurations:
-- AI-powered process automation
-- Email and notification workflows
-- Scheduled tasks
-- System integrations
+| Project | Description |
+|---------|-------------|
+| [AI ChatBot Searching Web](N8N_Automation_WorkFlows/AIChatBot_searchingWeb) | Conversational agent with tool use (n8n + LangChain) |
+| [Agent Current Weather Wikipedia](N8N_Automation_WorkFlows/Agent_CurrentWeather_Wikipedia) | Weather and Wikipedia agent |
+| [Chat Research Agent](N8N_Automation_WorkFlows/ChatResearch_agent) | Research workflow agent |
+| [Deepseek AI Researcher](N8N_Automation_WorkFlows/DeepseekAI_Researcher) | AI researcher workflow |
+| [OpenAI Scrapper](N8N_Automation_WorkFlows/OPENAI_Scrapper) | Web scraping with OpenAI |
+| [Easy Image Captioning](N8N_Automation_WorkFlows/EasyImageCaptioning_openai) | Image captioning workflow |
+| [Spot Workplace Discrimination](N8N_Automation_WorkFlows/SpotWorkplace_Diiscrimination) | Workplace pattern detection |
+| [URL/HTML to Markdown](N8N_Automation_WorkFlows/URLHTML2Markdown) | Convert URL/HTML to Markdown |
+| [Video Narrating](N8N_Automation_WorkFlows/VideoNarrating) | Video narration with AI |
+
+</details>
+
+<details>
+<summary><b>Data Science Projects</b> - Click to expand</summary>
+
+| Project | Description |
+|---------|-------------|
+| [ChurnSense](DS_PROJECTS/ChurnSense) | Churn analysis and user segmentation |
+| [Synthetic Data Factory](DS_PROJECTS/Synthetic_Data_Factory) | Synthetic data generation pipeline |
+| [MemoryBase Chatbot](DS_PROJECTS/MemoryBase_Chatbot) | Chatbot with persistent memory (Pinecone, Redis) |
+| [Multi-Agent Orchestrator (A2A)](DS_PROJECTS/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol) | Multi-agent orchestration with A2A protocol |
+| [Daily News Incremental Model](DS_PROJECTS/DailyNews_IncrementalModel) | Incremental learning for news |
+| [AI Expense Management](DS_PROJECTS/AIExpense-ManagementSystem) | Expense management system with AI |
 
 </details>
 
@@ -207,7 +252,19 @@ cd Anuj-AI-ML-Lab
 <tr>
 <td>
 
-**Step 2: Navigate to Project**
+**Step 2: Set up environment**
+```bash
+# Copy .env.example to .env and add your API keys
+cp .env.example .env
+# Edit .env with your keys (e.g. OPENAI_API_KEY)
+```
+
+</td>
+</tr>
+<tr>
+<td>
+
+**Step 3: Navigate to Project**
 ```bash
 cd <project_folder>
 ```
@@ -217,7 +274,7 @@ cd <project_folder>
 <tr>
 <td>
 
-**Step 3: Install Dependencies**
+**Step 4: Install Dependencies**
 ```bash
 python3 -m pip install -r requirements.txt
 ```
@@ -227,7 +284,7 @@ python3 -m pip install -r requirements.txt
 <tr>
 <td>
 
-**Step 4: Follow Project README**
+**Step 5: Follow Project README**
 ```bash
 # Each project has specific setup instructions
 cat README.md
@@ -257,6 +314,10 @@ We welcome contributions from the community!
 5. Open a Pull Request
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## Code of Conduct
+
+This project adheres to the [Contributor Covenant](https://www.contributor-covenant.org). See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details.
 
 ---
 
