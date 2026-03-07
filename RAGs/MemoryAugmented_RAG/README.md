@@ -11,13 +11,14 @@ Long-term conversational memory plus document retrieval using **Pinecone** and *
 
 ## Setup
 
-1. **Env** — In the **repo root** `.env` set:
+1. **Env** — Use the **repo root** `.env` only (no project-local .env). Set:
    - `PINECONE_API_KEY` (required)
    - `PINECONE_INDEX` (default: `memory-rag`)
    - `PINECONE_ENVIRONMENT` (optional)
-   - `OPENAI_API_KEY` (for embeddings and chat)
+   - **OpenAI:** `OPENAI_API_KEY` (for embeddings and chat), or
+   - **Azure OpenAI:** `AZURE_ENDPOINT`, `AZURE_KEY`, `API_VERSION` (optional `AZURE_EMBEDDING_DEPLOYMENT` for embeddings)
 
-2. **Pinecone index** — Create an index in the Pinecone console (or with the SDK) with **dimension 1536** (OpenAI `text-embedding-3-small`). Use the same name as `PINECONE_INDEX`.
+2. **Pinecone index** — The app auto-creates a serverless index (AWS `us-east-1`, dimension 1536, cosine) if missing. If you already created an index in another region (e.g. GCP), delete it in the Pinecone console (or `pc.delete_index("memory-rag")`) and run again so it is recreated in AWS `us-east-1`.
 
 3. **Install** (from this directory):
    ```bash
@@ -28,17 +29,25 @@ Long-term conversational memory plus document retrieval using **Pinecone** and *
 
 ## Run
 
-From `RAGs/MemoryAugmented_RAG`:
+Uses **repo root** `.venv` and **repo root** `.env` only (no project-local env).
+
+**Streamlit UI (recommended):** From repo root, activate `.venv` then run:
+
+```bash
+source .venv/bin/activate
+cd RAGs/MemoryAugmented_RAG
+streamlit run app.py
+```
+
+Or from anywhere (uses repo .venv): `./RAGs/MemoryAugmented_RAG/run_app.sh`
+
+**CLI:** From `RAGs/MemoryAugmented_RAG`:
 
 ```bash
 python rag_pipeline.py "Your question here"
 ```
 
-Or pipe a question:
-
-```bash
-echo "What did we discuss about X?" | python rag_pipeline.py
-```
+Or pipe a question: `echo "What did we discuss about X?" | python rag_pipeline.py`
 
 ## Project layout
 

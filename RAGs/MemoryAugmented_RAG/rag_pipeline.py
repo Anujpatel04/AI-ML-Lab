@@ -4,6 +4,7 @@ Orchestrates the full Memory-Augmented RAG pipeline:
 """
 
 import logging
+import time
 from typing import Optional
 
 import config
@@ -18,20 +19,55 @@ Use the provided "Relevant past conversations" and "Relevant documents" to answe
 If the context does not contain enough information, say so. Do not invent facts. Be concise."""
 
 
-def _get_openai_client():
-    """Return OpenAI client using API key from config (loaded from repo root .env)."""
-    if not config.OPENAI_API_KEY:
-        raise ValueError("OPENAI_API_KEY is not set in the repo root .env file.")
-    from openai import OpenAI
-    return OpenAI(api_key=config.OPENAI_API_KEY)
+def _get_client_and_models():
+    """Return (client, chat_model, embedding_model) from config. Uses Azure when set in repo root .env."""
+    return config.get_rag_client()
+
+
+def _ensure_pinecone_index_exists(pc, index_name: str, dimension: int = 1536):
+    """Create the index if it does not exist (serverless, dimension for OpenAI embeddings)."""
+    try:
+        existing = pc.list_indexes()
+        names = existing.names() if hasattr(existing, "names") else []
+        if index_name in names:
+            return
+    except Exception:
+        names = []
+    if index_name not in names:
+        from pinecone import ServerlessSpec, Metric
+        cloud = config.PINECONE_CLOUD
+        region = config.PINECONE_REGION
+        # AWS us-east-1 recommended for RAG stability
+        if cloud == "gcp":
+            spec = ServerlessSpec(cloud="gcp", region=region or "us-central1")
+        else:
+            spec = ServerlessSpec(cloud="aws", region=region or "us-east-1")
+        pc.create_index(
+            name=index_name,
+            dimension=dimension,
+            metric=Metric.COSINE,
+            spec=spec,
+        )
+        logger.info("Created Pinecone index %s (dimension=%s). Waiting for it to become ready...", index_name, dimension)
+        for _ in range(24):
+            time.sleep(5)
+            try:
+                desc = pc.describe_index(index_name)
+                if getattr(desc, "status", None) and getattr(desc.status, "ready", False):
+                    break
+            except Exception:
+                pass
+        logger.info("Index %s should be ready. If you see 404, wait a minute and retry.", index_name)
 
 
 def _get_pinecone_index():
-    """Build Pinecone client and return the index. Uses PINECONE_INDEX; optional PINECONE_HOST for legacy."""
+    """Build Pinecone client and return the index. Creates index if missing (serverless)."""
     if not config.PINECONE_API_KEY:
         raise ValueError("PINECONE_API_KEY is not set in the repo root .env file.")
     from pinecone import Pinecone
     pc = Pinecone(api_key=config.PINECONE_API_KEY)
+    if not config.PINECONE_HOST:
+        _ensure_pinecone_index_exists(pc, config.PINECONE_INDEX, config.EMBEDDING_DIMENSION)
     if config.PINECONE_HOST:
         index = pc.Index(host=config.PINECONE_HOST)
     else:
@@ -39,7 +75,7 @@ def _get_pinecone_index():
     return index
 
 
-def _generate_answer(client, query: str, memory_texts: list, doc_texts: list) -> str:
+def _generate_answer(client, chat_model: str, query: str, memory_texts: list, doc_texts: list) -> str:
     """Build prompt from memories + documents and call the LLM."""
     memories_block = "\n".join(memory_texts) if memory_texts else "(None)"
     docs_block = "\n\n".join(doc_texts) if doc_texts else "(None)"
@@ -54,7 +90,7 @@ Question: {query}
 Answer the question using the above context when relevant."""
 
     resp = client.chat.completions.create(
-        model=config.CHAT_MODEL,
+        model=chat_model,
         messages=[
             {"role": "system", "content": RAG_SYSTEM_PROMPT},
             {"role": "user", "content": user_content},
@@ -96,7 +132,7 @@ def run(
     top_k_memory = top_k_memory if top_k_memory is not None else config.TOP_K_MEMORY
     top_k_docs = top_k_docs if top_k_docs is not None else config.TOP_K_DOCS
 
-    client = _get_openai_client()
+    client, chat_model, embedding_model = _get_client_and_models()
     index = _get_pinecone_index()
 
     # Optional: ensure document index is populated from data/ on first use
@@ -110,7 +146,7 @@ def run(
                 index_documents(
                     index,
                     client,
-                    config.EMBEDDING_MODEL,
+                    embedding_model,
                     config.DATA_DIR,
                     namespace=config.NAMESPACE_DOCUMENTS,
                     chunk_size=config.CHUNK_SIZE,
@@ -123,7 +159,7 @@ def run(
     memory_texts = search_memory(
         index,
         client,
-        config.EMBEDDING_MODEL,
+        embedding_model,
         query,
         namespace=config.NAMESPACE_MEMORY,
         top_k=top_k_memory,
@@ -133,14 +169,14 @@ def run(
     doc_texts = retrieve_documents(
         index,
         client,
-        config.EMBEDDING_MODEL,
+        embedding_model,
         query,
         namespace=config.NAMESPACE_DOCUMENTS,
         top_k=top_k_docs,
     )
 
     # 3. LLM answer generation
-    answer = _generate_answer(client, query, memory_texts, doc_texts)
+    answer = _generate_answer(client, chat_model, query, memory_texts, doc_texts)
 
     # 4. Store new memory (conversation turn)
     memory_text = f"Q: {query}\nA: {answer}"
@@ -148,7 +184,7 @@ def run(
         store_memory(
             index,
             client,
-            config.EMBEDDING_MODEL,
+            embedding_model,
             memory_text,
             namespace=config.NAMESPACE_MEMORY,
         )
