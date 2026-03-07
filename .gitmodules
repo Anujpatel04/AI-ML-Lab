@@ -1,37 +1,21 @@
-[submodule "LLM_PROJECTS/AIExpense-ManagementSystem"]
-	path = DS_PROJECTS/AIExpense-ManagementSystem
+[submodule "CAPSTONE_PROJECTS/AIExpense-ManagementSystem"]
+	path = CAPSTONE_PROJECTS/AIExpense-ManagementSystem
 	url = https://github.com/Anujpatel04/AIExpense-ManagementSystem
-[submodule "LLM_PROJECTS/DailyNews_IncrementalModel"]
-	path = LLM_PROJECTS/DailyNews_IncrementalModel
+[submodule "CAPSTONE_PROJECTS/ChurnSense"]
+	path = CAPSTONE_PROJECTS/ChurnSense
+	url = https://github.com/Anujpatel04/ChurnSense.git
+[submodule "CAPSTONE_PROJECTS/DailyNews_IncrementalModel"]
+	path = CAPSTONE_PROJECTS/DailyNews_IncrementalModel
 	url = https://github.com/Anujpatel04/DailyNews_IncrementalModel
-[submodule "LLM_PROJECTS/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol"]
-	path = LLM_PROJECTS/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol
-	url = https://github.com/Anujpatel04/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol
-[submodule "LLM_PROJECTS/MemoryBase_Chatbot"]
-	path = LLM_PROJECTS/MemoryBase_Chatbot
+[submodule "CAPSTONE_PROJECTS/MemoryBase_Chatbot"]
+	path = CAPSTONE_PROJECTS/MemoryBase_Chatbot
 	url = https://github.com/Anujpatel04/MemoryBase_Chatbot
-[submodule "LLM_PROJECTS/Synthetic_Data_Factory"]
-	path = LLM_PROJECTS/Synthetic_Data_Factory
+[submodule "CAPSTONE_PROJECTS/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol"]
+	path = CAPSTONE_PROJECTS/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol
+	url = https://github.com/Anujpatel04/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol
+[submodule "CAPSTONE_PROJECTS/Synthetic_Data_Factory"]
+	path = CAPSTONE_PROJECTS/Synthetic_Data_Factory
 	url = https://github.com/Anujpatel04/Synthetic_Data_Factory
 [submodule "RAGs/GraphRAG_Papers"]
 	path = RAGs/GraphRAG_Papers
 	url = https://github.com/Anujpatel04/GraphRAG_Papers.git
-[submodule "DS_PROJECTS/ChurnSense"]
-	path = DS_PROJECTS/ChurnSense
-	url = https://github.com/Anujpatel04/ChurnSense.git
-
-	[submodule "DS_PROJECTS/DailyNews_IncrementalModel"]
-		path = DS_PROJECTS/DailyNews_IncrementalModel
-		url = https://github.com/Anujpatel04/DailyNews_IncrementalModel
-
-		[submodule "DS_PROJECTS/MemoryBase_Chatbot"]
-			path = DS_PROJECTS/MemoryBase_Chatbot
-			url = https://github.com/Anujpatel04/MemoryBase_Chatbot
-
-			[submodule "DS_PROJECTS/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol"]
-				path = DS_PROJECTS/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol
-				url = https://github.com/Anujpatel04/Multi-agent-orchestrator-system-with-standardized-A2A-Protocol
-
-				[submodule "DS_PROJECTS/Synthetic_Data_Factory"]
-					path = DS_PROJECTS/Synthetic_Data_Factory
-					url = https://github.com/Anujpatel04/Synthetic_Data_Factory
