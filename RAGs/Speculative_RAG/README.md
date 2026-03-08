@@ -16,7 +16,7 @@ Production-style Speculative Retrieval-Augmented Generation: a small model produ
    pip install -r requirements.txt
    ```
 
-2. Configure API keys in the **repo root** `.env` (see `.env.example`):
+2. Configure API keys in the **repo root** `.env` only (no project-local .env):
    - **OpenAI:** `OPENAI_API_KEY=sk-...`
    - **Azure OpenAI:** `AZURE_ENDPOINT`, `AZURE_KEY`, `API_VERSION` (optional draft/verifier deployments: `AZURE_DRAFT_DEPLOYMENT`, `AZURE_VERIFIER_DEPLOYMENT`)
 

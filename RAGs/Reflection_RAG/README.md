@@ -9,7 +9,7 @@ Retrieval-Augmented Generation with self-critique: retrieve docs, generate an in
 ## Requirements
 
 - Python 3.9+
-- **Repo root** `.env` (parent of `RAGs`) with either:
+- **Repo root** `.env` only (no per-project .env) with either:
   - **OpenAI:** `OPENAI_API_KEY`, or
 
 ## Installation
