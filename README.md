@@ -133,11 +133,15 @@ Welcome to **Anuj AI/ML Lab** - a comprehensive learning resource and developmen
 
 | Project | Description |
 |---------|-------------|
+| [Adaptive RAG](RAG_systems/Adaptive_RAG) | Query-classified retrieval: vector (FAISS), graph (Neo4j), or hybrid; Azure OpenAI; Streamlit + CLI |
+| [Multi-Agent RAG](RAG_systems/MultiAgent_RAG) | Retriever → Reasoning → Verification agents; SentenceTransformers + FAISS; Streamlit UI |
+| [Context Compression RAG](RAG_systems/Context_Compression_RAG) | Top-20 retrieval → LLM compression → top-5 → answer; Azure OpenAI, FAISS, Streamlit |
+| [Hybrid Graph RAG](RAG_systems/HybridGraph_RAG) | Vector (Pinecone) + graph (Neo4j) retrieval; Streamlit |
 | [Page-Indexed RAG](RAGs/PageIndexed_RAG) | PDF RAG with page-level retrieval and source attribution |
 | [PDF RAG](RAGs/PDF_RAG) | Chat and query over PDF documents |
 | [GraphRAG Papers](RAGs/GraphRAG_Papers) | Graph-based RAG over academic papers (Neo4j + Next.js) |
 
-Advanced retrieval-augmented generation: document indexing, semantic search, context-aware QA, multi-source integration.
+Advanced retrieval-augmented generation: document indexing, semantic search, context-aware QA, multi-source integration. Many RAG systems use the repo root `.env` for Azure/Neo4j credentials.
 
 </details>
 
