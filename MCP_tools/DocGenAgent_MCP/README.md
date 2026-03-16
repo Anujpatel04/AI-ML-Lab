@@ -2,7 +2,11 @@
 
 Generate markdown documentation for a local Python repository via a simple FastAPI endpoint.
 
-![AI Documentation Generator – Architecture](../DocGenAgent_MCP/docs/doc_gen_agent_architecture.svg)
+<p align="center">
+  <img src="doc_gen_agent_architecture.svg"
+       alt="AI Documentation Generator – Architecture"
+       width="900" />
+</p>
 
 ## Quick Start
 
