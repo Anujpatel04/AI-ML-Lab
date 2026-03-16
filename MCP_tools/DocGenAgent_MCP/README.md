@@ -2,6 +2,11 @@
 
 Generate markdown documentation for a local Python repository via a simple FastAPI endpoint.
 
+## Problem It Solves
+
+> **Keeping API docs in sync with real code is hard.**  
+> This agent scans your Python repo, understands classes and functions via AST + LLM, and generates a clean, current README for you with one HTTP call.
+
 <p align="center">
   <img src="doc_gen_agent_architecture.svg"
        alt="AI Documentation Generator – Architecture"
