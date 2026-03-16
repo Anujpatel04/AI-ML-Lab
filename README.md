@@ -133,6 +133,7 @@ Welcome to **Anuj AI/ML Lab** - a comprehensive learning resource and developmen
 
 | Project | Description |
 |---------|-------------|
+| [Self-Healing RAG](RAG_systems/SelfHealing_RAG) | Detects poor retrieval, retries search, then generates answer; Azure OpenAI + Pinecone; Streamlit |
 | [Adaptive RAG](RAG_systems/Adaptive_RAG) | Query-classified retrieval: vector (FAISS), graph (Neo4j), or hybrid; Azure OpenAI; Streamlit + CLI |
 | [Multi-Agent RAG](RAG_systems/MultiAgent_RAG) | Retriever → Reasoning → Verification agents; SentenceTransformers + FAISS; Streamlit UI |
 | [Context Compression RAG](RAG_systems/Context_Compression_RAG) | Top-20 retrieval → LLM compression → top-5 → answer; Azure OpenAI, FAISS, Streamlit |
