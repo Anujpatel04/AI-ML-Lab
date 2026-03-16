@@ -8,7 +8,7 @@ Generates structured markdown documentation from a local Python repository using
 
 The following diagram shows the high-level flow and components:
 
-![AI Documentation Generator – Architecture](/Users/anuj/Desktop/doc_gen_agent_architecture.svg)
+![AI Documentation Generator – Architecture](docs/doc_gen_agent_architecture.svg)
 
 | Layer | Components |
 |-------|------------|
