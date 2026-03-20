@@ -1,46 +1,51 @@
 # GitHub Issue Automation Agent
 
-> **Automates issue triage:** classification, labels, priority, summary, root-cause hypothesis, fix suggestions, actionable tasks, and recommended owner—via one API call.
+FastAPI service that turns raw issue text into **structured triage data** (labels, priority, summary, tasks, owner hints) using an LLM.
 
 ## Problem
 
-Engineering teams spend time manually labeling, prioritizing, and breaking down GitHub issues. This service uses an LLM (Azure OpenAI by default) to produce **structured, consistent JSON** for automation or CI.
+Issue backlogs are hard to keep consistent: humans must guess type, severity, labels, and next steps—often slowly and unevenly across teams.
 
-## Quick Start
+## How it works
+
+1. **Input** — You `POST` issue fields (`title`, `description`, optional `comments` / `labels` / `metadata`).
+2. **Analysis** — LangChain calls your configured model (defaults to **Azure OpenAI** from the repo root `.env`).
+3. **Output** — Validated JSON: `issue_type`, `labels`, `priority`, `summary`, `root_cause`, `suggested_fix`, `tasks` (3–6 steps), `recommended_assignee`.
+
+Use the response for automation, Slack/GitHub bots, or CI—not as a substitute for human review on critical issues.
+
+## Quick start
 
 ```bash
 source /path/to/Anuj-AI-ML-Lab/.venv/bin/activate
 cd MCP_tools/GitHubIssueAgent_MCP
 pip install -r requirements.txt
 PYTHONPATH=. uvicorn api.main:app --reload --host 0.0.0.0 --port 8010
+# or: ./run.sh
 ```
 
-Uses repo root `.env` (`AZURE_ENDPOINT`, `AZURE_KEY`, `API_VERSION`, …). Optional: `ISSUE_AGENT_LLM_PROVIDER` = `azure` | `openai` | `ollama`.
+Config: repo root `.env` (`AZURE_ENDPOINT`, `AZURE_KEY`, `API_VERSION`, …). Optional: `ISSUE_AGENT_LLM_PROVIDER` = `azure` | `openai` | `ollama`.
 
 ## API
 
-`POST /analyze-issue` — body:
+**`POST /analyze-issue`** — body example:
 
 ```json
 {
   "title": "Login API returns 500",
-  "description": "Users cannot log in when calling /api/login.",
-  "comments": ["Happens on prod only"],
-  "labels": ["login"],
-  "metadata": {"area": "auth"}
+  "description": "Users cannot log in when calling POST /api/login.",
+  "comments": ["Reproduces on prod only"],
+  "labels": ["auth"],
+  "metadata": {"env": "production"}
 }
 ```
 
-Response matches the strict schema: `issue_type`, `labels`, `priority`, `summary`, `root_cause`, `suggested_fix`, `tasks`, `recommended_assignee`.
-
-Open **http://localhost:8010/docs** to try it interactively.
-
-## Project layout
+## Layout
 
 | Path | Role |
 |------|------|
-| `api/main.py` | FastAPI app |
-| `llm/chains.py` | LLM + JSON parse + validation |
-| `llm/prompts.py` | System/human prompts |
-| `models/schemas.py` | Request/response Pydantic models |
-| `utils/config.py` | Env (Azure / OpenAI / Ollama) |
+| `api/main.py` | HTTP routes |
+| `llm/chains.py` | LLM call, JSON extract, validation |
+| `llm/prompts.py` | Prompts |
+| `models/schemas.py` | Request / response schemas |
+| `utils/config.py` | Environment |
