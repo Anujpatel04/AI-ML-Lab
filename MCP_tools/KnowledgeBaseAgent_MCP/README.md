@@ -47,8 +47,6 @@ curl -s -X POST http://localhost:8020/query -H "Content-Type: application/json" 
   -d '{"question": "What is the refund policy?"}'
 ```
 
-Swagger: **http://localhost:8020/docs**
-
 ## API
 
 | Endpoint | Purpose |
