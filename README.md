@@ -338,8 +338,6 @@ This project is licensed under the terms specified in the [LICENSE](LICENSE) fil
 
 If you find this project useful, please consider giving it a star!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Anujpatel04/Anuj-AI-ML-Lab&type=Date)](https://star-history.com/#Anujpatel04/Anuj-AI-ML-Lab&Date)
-
 ---
 
 **Made with care by Anuj**
