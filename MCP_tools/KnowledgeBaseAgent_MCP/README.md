@@ -12,6 +12,14 @@ Teams store truth in scattered files; support and engineers waste time searching
 2. **Query** — `POST /query` embeds the question, retrieves top-k chunks, and calls your **LLM** (default **Azure OpenAI** from repo `.env`) with strict “answer from context only” instructions.
 3. **Response** — Returns `answer` plus `sources` (file paths + short snippets).
 
+## Architecture
+
+<p align="center">
+  <img src="rag_system_structure.svg"
+       alt="RAG system structure — ingest, vector store, retrieve, LLM"
+       width="900" />
+</p>
+
 ## Quick start
 
 ```bash
@@ -67,3 +75,4 @@ Swagger: **http://localhost:8020/docs**
 | `core/rag_chain.py` | Retriever + LLM |
 | `kb_documents/` | Drop internal docs here |
 | `data/chroma_db/` | Vector index (gitignored) |
+| `rag_system_structure.svg` | Architecture diagram (referenced above) |
